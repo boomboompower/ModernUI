@@ -27,6 +27,7 @@ import wtf.boomy.mods.modernui.threads.SimpleCallback;
 import wtf.boomy.mods.modernui.uis.ModernGui;
 import wtf.boomy.mods.modernui.uis.faces.HeaderChildComponent;
 import wtf.boomy.mods.modernui.uis.faces.InteractiveUIElement;
+import wtf.boomy.mods.modernui.uis.faces.SkinnedUIElement;
 import wtf.boomy.mods.modernui.uis.faces.StartEndUIElement;
 
 import java.awt.Color;
@@ -40,7 +41,7 @@ import java.util.List;
  * @version 2.0
  * @since 3.0.0
  */
-public class ButtonComponent implements HeaderChildComponent, InteractiveUIElement, StartEndUIElement {
+public class ButtonComponent implements HeaderChildComponent, InteractiveUIElement, StartEndUIElement, SkinnedUIElement {
     
     private static final ResourceLocation buttonTextures = new ResourceLocation("textures/gui/widgets.png");
     
@@ -391,12 +392,14 @@ public class ButtonComponent implements HeaderChildComponent, InteractiveUIEleme
         return translatable;
     }
     
-    public <T extends ButtonComponent> T setDrawingModern(boolean drawingModern) {
+    @Override
+    public ButtonComponent setDrawingModern(boolean drawingModern) {
         this.modern = drawingModern;
         
-        return (T) this;
+        return this;
     }
     
+    @Override
     public boolean isDrawingModern() {
         return this.modern;
     }

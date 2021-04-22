@@ -18,6 +18,7 @@
 package wtf.boomy.mods.modernui.uis;
 
 import com.google.common.collect.Lists;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.FontRenderer;
@@ -30,7 +31,9 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+
 import org.lwjgl.input.Mouse;
+
 import wtf.boomy.mods.modernui.uis.components.ButtonComponent;
 import wtf.boomy.mods.modernui.uis.components.TextBoxComponent;
 import wtf.boomy.mods.modernui.uis.faces.InteractiveUIElement;

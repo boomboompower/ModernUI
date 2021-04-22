@@ -26,13 +26,14 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ChatAllowedCharacters;
 import org.lwjgl.input.Keyboard;
 import wtf.boomy.mods.modernui.uis.ModernGui;
+import wtf.boomy.mods.modernui.uis.faces.SkinnedUIElement;
 
 import java.awt.Color;
 
 /**
  * A modified vanilla class textbox
  */
-public class TextBoxComponent {
+public class TextBoxComponent implements SkinnedUIElement {
     
     private final int id;
     
@@ -87,6 +88,8 @@ public class TextBoxComponent {
             this.setCursorPositionEnd();
             return;
         }
+        
+        this.text = text;
         
         this.setCursorPositionEnd();
     }
@@ -389,7 +392,7 @@ public class TextBoxComponent {
      * Draws the textbox
      */
     public void drawTextBox() {
-        if (this.modern) {
+        if (!this.modern) {
             Color backgroundColor;
     
             if (this.isEnabled) {
@@ -433,7 +436,7 @@ public class TextBoxComponent {
             lengthOfSelection = trimmedString.length();
         }
         
-        if (this.modern && trimmedString.isEmpty() && !this.isFocused && this.isEnabled) {
+        if (!this.modern && trimmedString.isEmpty() && !this.isFocused && this.isEnabled) {
             fontRenderer.drawString(this.noTextMessage, ((this.x + (float) this.width / 2) - (float) fontRenderer.getStringWidth(this.noTextMessage) / 2), this.y + (float) this.height / 2 - 4, textColor, false);
             return;
         }
@@ -557,6 +560,12 @@ public class TextBoxComponent {
         this.isFocused = isFocused;
     }
     
+    public TextBoxComponent setEnabled(boolean enabled) {
+        this.isEnabled = enabled;
+        
+        return this;
+    }
+    
     /**
      * the side of the selection that is not the cursor, may be the same as the cursor
      */
@@ -612,14 +621,20 @@ public class TextBoxComponent {
         }
     }
     
-    public <T extends TextBoxComponent> T setDrawingModern(boolean drawingModern) {
+    @Override
+    public TextBoxComponent setDrawingModern(boolean drawingModern) {
         this.modern = drawingModern;
         
-        return (T) this;
+        return this;
     }
     
+    @Override
     public boolean isDrawingModern() {
         return this.modern;
+    }
+    
+    public boolean isEnabled() {
+        return this.isEnabled;
     }
     
     private int clamp(int input, int max) {

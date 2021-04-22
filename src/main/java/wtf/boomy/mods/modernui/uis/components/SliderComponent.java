@@ -22,6 +22,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 import wtf.boomy.mods.modernui.uis.ModernGui;
 import wtf.boomy.mods.modernui.uis.faces.InteractiveUIElement;
+import wtf.boomy.mods.modernui.uis.faces.SkinnedUIElement;
 import wtf.boomy.mods.modernui.uis.faces.StartEndUIElement;
 
 import java.awt.Color;
@@ -31,7 +32,7 @@ import java.awt.Color;
  *
  * @author boomboompower
  */
-public class SliderComponent implements InteractiveUIElement, StartEndUIElement {
+public class SliderComponent implements InteractiveUIElement, StartEndUIElement, SkinnedUIElement {
     
     private static final ResourceLocation buttonTextures = new ResourceLocation("textures/gui/widgets.png");
     
@@ -288,12 +289,14 @@ public class SliderComponent implements InteractiveUIElement, StartEndUIElement 
         this.enabled = enabled;
     }
     
-    public <T extends SliderComponent> T setDrawingModern(boolean drawingModern) {
+    @Override
+    public SliderComponent setDrawingModern(boolean drawingModern) {
         this.modern = drawingModern;
         
-        return (T) this;
+        return this;
     }
     
+    @Override
     public boolean isDrawingModern() {
         return this.modern;
     }

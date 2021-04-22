@@ -40,7 +40,10 @@ public class LabelComponent implements ModernUIElement {
     private final int width;
     private final int colour;
     
-    private final String text;
+    // Should the text be translating?
+    private boolean translating = true;
+    
+    private String text;
     
     /**
      * Takes the x and y positions for where to render the text. Similarly, the exact text for rendering can be chosen
@@ -74,6 +77,26 @@ public class LabelComponent implements ModernUIElement {
         this.width = Minecraft.getMinecraft().fontRendererObj.getStringWidth(text);
         
         this.text = text;
+    }
+    
+    @Override
+    public ModernUIElement disableTranslatable() {
+        this.translating = false;
+        
+        return this;
+    }
+    
+    @Override
+    public boolean isTranslatable() {
+        return this.translating;
+    }
+    
+    public void setText(String text) {
+        this.text = text;
+    }
+    
+    public String getText() {
+        return this.text;
     }
     
     @Override
