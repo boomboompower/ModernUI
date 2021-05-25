@@ -124,7 +124,7 @@ public class ButtonComponent implements HeaderChildComponent, InteractiveUIEleme
     
             renderOuterGlow(xPosition, yPosition, partialTicks);
             
-            if (this.modern) {
+            if (!this.modern) {
                 drawOldBackground(xPosition, yPosition);
             } else {
                 drawNewBackground(xPosition, yPosition, this.enabled ? getEnabledColor().getRGB() : getDisabledColor().getRGB());
