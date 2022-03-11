@@ -1,5 +1,12 @@
-ModernUI Suite
-==============
+# ModernUI Suite
+
+## Notice on Archival
+As of the 12th of March, this mod will no longer be updated or maintained - Anyone is free to get in touch and fork this if they wish :)
+
+A Minecraft mod which allows players to change their cape and skin directly from an in-game menu. Skins can be retrieved from files, urls and directly from player names and UUIDs.
+
+-----------
+
 
 A series of UI utilities which I use in my mods. 
 
